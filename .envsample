@@ -1,0 +1,4 @@
+SECRET_KEY = "Your SECRET_KEY"
+NAME = "Your db NAME"
+USER = "Your db USER"
+PASSWORD = "Your db PASSWORD"
