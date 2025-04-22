@@ -19,12 +19,12 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
     if request.method == "POST":
-        form = CommentForm(request.post)
+        form = CommentForm(request.POST)
         if form.is_valid():
             commnet = form.save(commit=False)
             commnet.post = post
             commnet.save()
-            return redirect("blog:post_detail", pk=post.pk)
+            return redirect("blog:detail", pk=post.pk)
     else:
         form = CommentForm()
     
