@@ -1,0 +1,26 @@
+<!-- 
+Template to display list of blog posts 
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog - Post List</title>
+    </head>
+    <body>
+        <h1>All blog posts</h1>
+
+        {% for post in posts %}
+            <h2>
+                <a href="{% url 'blog:detail' post.pk %}">
+                    {{ post.title }}
+                </a>
+                {{ post.pk }}
+            </h2>
+            <p>By {{ post.author }} on {{ post.create_at }}</p>
+            <p>{{ post.content|truncatechars:150 }}</p>
+        {% empty %}
+            <p>No posts available.</p>
+        {% endfor %}
+    </body>
+</html>

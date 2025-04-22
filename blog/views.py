@@ -8,11 +8,8 @@ from .forms import CommentForm
 Create view for show all posts in database
 """
 def post_list(request):
-    try:
-        posts = Post.objects.all().order_by("-created_at")
-        return render(request, "blog/post_list.html", {"posts": posts})
-    except:
-        return render(request, "blog/post_list.html", {"posts": "there is no post"})
+    posts = Post.objects.all().order_by("-create_at")
+    return render(request, "blog/post_list.html", {"posts": posts})
 
 
 """
@@ -21,7 +18,7 @@ View to dispaly a single post with its comments and comment form
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
-    if request.mehtod == "POST":
+    if request.method == "POST":
         form = CommentForm(request.post)
         if form.is_valid():
             commnet = form.save(commit=False)
