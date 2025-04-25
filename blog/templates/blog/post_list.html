@@ -2,10 +2,13 @@
 Template to display list of blog posts 
 -->
 
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Blog - Post List</title>
+        <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
     </head>
     <body>
         <h1>All blog posts</h1>

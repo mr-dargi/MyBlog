@@ -2,10 +2,13 @@
 Template to display single post and its comment form
 -->
 
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>{{ post.title }} - Detail</title>
+        <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
     </head>
     <body>
         <h1>{{ post.title }}</h1>
