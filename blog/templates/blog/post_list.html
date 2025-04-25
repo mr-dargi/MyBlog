@@ -13,7 +13,7 @@ Template to display list of blog posts
     <body>
         <h1>All blog posts</h1>
 
-        {% for post in posts %}
+        {% for post in page_obj %}
             <h2>
                 <a href="{% url 'blog:detail' post.pk %}">
                     {{ post.title }}
@@ -25,5 +25,30 @@ Template to display list of blog posts
         {% empty %}
             <p>No posts available.</p>
         {% endfor %}
+
+
+        <div class="pagination">
+            <span>
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            <div>
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <strong>{{ num }}</strong>
+                    {% else %}
+                        <a href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </div>
+        </div>
     </body>
 </html>
