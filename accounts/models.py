@@ -20,11 +20,11 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models. models.EmailField(unique=True)
-    full_name = models.models.CharField(max_length=255)
-    is_active = models.models.BooleanField(default=True)
-    is_staff = models.models.BooleanField(default=False)
-    data_joined = models.models.DateTimeField(default=timezone.now)
+    email = models.EmailField(unique=True)
+    full_name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    data_joined = models.DateTimeField(default=timezone.now)
 
     objects = UserManager()
 

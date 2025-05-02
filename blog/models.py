@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import User
 
 """
 Post model to represent a blog post
@@ -6,6 +7,7 @@ Post model to represent a blog post
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
